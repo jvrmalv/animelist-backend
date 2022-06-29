@@ -2,7 +2,6 @@ defmodule AnimeList.Animes.Anime do
   use Ecto.Schema
   import Ecto.Changeset
 
-  belongs_to
   schema "animes" do
     field :description, :string
     field :episodes, :integer
