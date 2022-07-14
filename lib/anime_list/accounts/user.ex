@@ -10,18 +10,18 @@ defmodule AnimeList.Accounts.User do
     timestamps()
   end
 
-  @cast_fields {
+  @cast_fields [
     :email,
     :password
-  }
+  ]
 
-  @required_fields {
+  @required_fields [
     :email,
     :password
-  }
+  ]
 
   @doc false
-  def changeset(user, attrs) do
+  def changeset(user \\  %__MODULE__{} , attrs) do
     user
     |> cast(attrs, @cast_fields)
     |> validate_required(@required_fields)

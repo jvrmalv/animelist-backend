@@ -26,6 +26,10 @@ config :anime_list, AnimeListWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :anime_list, AnimeList.Mailer, adapter: Swoosh.Adapters.Local
 
+config :anime_list, AnimeListWeb.Auth.Guardian,
+  issuer: "anime_list",
+  secret_key: "+LwDgq7Y7APIqELALJ7fPXN0E3LyBXxjXhboEDvuDmggKzd84gADnmlkdF7pUY5U"
+
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 

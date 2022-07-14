@@ -14,11 +14,12 @@ defmodule AnimeListWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AnimeListWeb do
-    pipe_through :browser
+  scope "/api", AnimeListWeb do
+    pipe_through :api
 
-    get "/", PageController, :index
     resources "/anime", AnimeController
+    post "/users/signup", UserController, :create
+    post "/users/signin", UserController, :signin
   end
 
   # Other scopes may use custom stacks.

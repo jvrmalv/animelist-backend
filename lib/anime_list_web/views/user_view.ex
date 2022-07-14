@@ -10,10 +10,10 @@ defmodule AnimeListWeb.UserView do
     %{data: render_one(user, UserView, "user.json")}
   end
 
-  def render("user.json", %{user: user}) do
+  def render("user.json", %{user: user, token: token}) do
     %{
-      id: user.id,
-      email: user.email
+      email: user.email,
+      token: token
     }
   end
 end
