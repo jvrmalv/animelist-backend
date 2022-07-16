@@ -10,6 +10,10 @@ defmodule AnimeListWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :auth do
+    plug AnimeListWeb.Auth.Pipeline
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -17,11 +21,15 @@ defmodule AnimeListWeb.Router do
   scope "/api", AnimeListWeb do
     pipe_through :api
 
-    resources "/anime", AnimeController
     post "/users/signup", UserController, :create
     post "/users/signin", UserController, :signin
   end
 
+  scope "/api", AnimeListWeb do
+    pipe_through [:api, :auth]
+
+    resources "/anime", AnimeController
+  end
   # Other scopes may use custom stacks.
   # scope "/api", AnimeListWeb do
   #   pipe_through :api
